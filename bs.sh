@@ -12,14 +12,14 @@ PATCHLEVEL=$(grep -E '^PATCHLEVEL' kernel/samsung/gta4xl/Makefile | cut -d' ' -f
 
 sed -i '/# CONFIG_SYSVIPC is not set/d' $ANDROID_BUILD_TOP/kernel/configs/*/android-${KERNEL_VERSION}.${PATCHLEVEL}/android-base.config
 
-echo "$(call inherit-product, vendor/lindroid/lindroid.mk)" > device/samsung/gta4xl/device.mk
+sed -i "$ a $(call inherit-product, vendor/lindroid/lindroid.mk)" device/samsung/gta4xl/device.mk
 
 cd $ANDROID_BUILD_TOP/frameworks/native
 wget https://github.com/LMODroid/platform_frameworks_native/commit/51b680f33b66e06b18725fdf9a54fa923c14a10b.patch
 git am 51b680f*.patch
 cd $ANDROID_BUILD_TOP
 
-echo "BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive" > $ANDROID_BUILD_TOP/device/samsung/gta4xl/BoardConfig.mk
+sed -i "$ a BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive" $ANDROID_BUILD_TOP/device/samsung/gta4xl/BoardConfig.mk
 
 # build using userdebug
 
