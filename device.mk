@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Inherit lindroid
+$(call inherit-product, vendor/lindroid/lindroid.mk)
+
 # Inherit from the common tree
 $(call inherit-product, device/samsung/gta4xl-common/common.mk)
 
@@ -53,3 +56,4 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/ril/sehradiomanager.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sehradiomanager.conf
+
