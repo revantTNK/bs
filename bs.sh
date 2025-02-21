@@ -16,6 +16,10 @@ echo '</manifest>' >> .repo/local_manifests/muppets.xml
 source build/envsetup.sh
 breakfast gta4xl
 
+# pull unavailable vendor files
+git clone https://github.com/TheMuppets/proprietary_vendor_samsung_gta4xl -b lineage-21 vendor/samsung/gta4xl
+git clone https://github.com/TheMuppets/proprietary_vendor_samsung_gta4xl-common -b lineage-21 vendor/samsung/gta4xl-common
+
 # add lindroid.mk to device.mk file
 sed -i "$ a $(call inherit-product, vendor/lindroid/lindroid.mk)" device/samsung/gta4xl/device.mk
 
