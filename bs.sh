@@ -20,8 +20,8 @@ breakfast gta4xl
 git clone https://github.com/TheMuppets/proprietary_vendor_samsung_gta4xl -b lineage-21 vendor/samsung/gta4xl
 git clone https://github.com/TheMuppets/proprietary_vendor_samsung_gta4xl-common -b lineage-21 vendor/samsung/gta4xl-common
 
-# add lindroid.mk to device.mk file
-sed -i "$ a $(call inherit-product, vendor/lindroid/lindroid.mk)" device/samsung/gta4xl/device.mk
+# replace device.mk because sed hates dollar symbols and im mad now 
+wget https://github.com/revantTNK/bs/raw/refs/heads/main/device.mk -P device/samsung/gta4xl/device.mk
 
 # Patches
 ## Linux kernel defconfig
@@ -43,23 +43,16 @@ echo 'CONFIG_NET_NS=y' >> kernel/samsung/gta4xl/arch/arm64/configs/exynos9611-gt
 echo 'CONFIG_CGROUP_DEVICE=y' >> kernel/samsung/gta4xl/arch/arm64/configs/exynos9611-gta4xl_defconfig
 echo 'CONFIG_GROUP_FREEZER=y' >> kernel/samsung/gta4xl/arch/arm64/configs/exynos9611-gta4xl_defconfig
 
-## Download patches
-wget https://raw.githubusercontent.com/Soupborsh/Lindroid-files/refs/heads/main/patches/general/EventHub.patch
-wget https://github.com/android-kxxt/android_kernel_xiaomi_sm8450/commit/ae700d3d04a2cd8b34e1dae434b0fdc9cde535c7.patch
-wget https://raw.githubusercontent.com/Soupborsh/Lindroid-files/refs/heads/main/patches/general/0001-Ignore-uevent-s-with-null-name-for-Extcon-WiredAcces.patch
-wget https://github.com/Linux-on-droid/vendor_lindroid/commit/10f98759162a0034a2afa62c5977f9bcf921db13.patch
+## Download patch
+cd $ANDROID_BUILD_TOP/frameworks/native
+wget https://github.com/LMODroid/platform_frameworks_native/commit/51b680f33b66e06b18725fdf9a54fa923c14a10b.patch
 
-## Apply patches
-patch frameworks/native/services/inputflinger/reader/EventHub.cpp EventHub.patch
-patch kernel/samsung/gta4xl/fs/overlayfs/util.c ae700d3d04a2cd8b34e1dae434b0fdc9cde535c7.patch
-git apply 0001-Ignore-uevent-s-with-null-name-for-Extcon-WiredAcces.patch --directory=frameworks/base/
-patch -R vendor/lindroid/app/app/src/main/java/org/lindroid/ui/DisplayActivity.java 10f98759162a0034a2afa62c5977f9bcf921db13.patch
+## Apply patch
+git am 51b680f*.patch
+cd $ANDROID_BUILD_TOP
 
-## Remove patch files
-rm EventHub.patch
-rm ae700d3d04a2cd8b34e1dae434b0fdc9cde535c7.patch
-rm 0001-Ignore-uevent-s-with-null-name-for-Extcon-WiredAcces.patch
-rm 10f98759162a0034a2afa62c5977f9bcf921db13.patch
+## Remove patch file
+rm $ANDROID_BUILD_TOP/frameworks/native/51b680f33b66e06b18725fdf9a54fa923c14a10b.patch
 
 # Fix building by removing CONFIG_SYSVIPC from android-base.config
 KERNEL_VERSION=$(grep -E '^VERSION' kernel/samsung/gta4xl/Makefile | cut -d' ' -f3)
