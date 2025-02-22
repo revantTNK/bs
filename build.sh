@@ -21,7 +21,7 @@ git clone https://github.com/TheMuppets/proprietary_vendor_samsung_gta4xl -b lin
 git clone https://github.com/TheMuppets/proprietary_vendor_samsung_gta4xl-common -b lineage-21 vendor/samsung/gta4xl-common
 
 # replace device.mk because sed hates dollar symbols and im mad now 
-wget https://github.com/revantTNK/bs/raw/refs/heads/main/device.mk -P device/samsung/gta4xl/device.mk
+wget https://github.com/revantTNK/bs/raw/refs/heads/main/device.mk -P device/samsung/gta4xl/
 
 # Patches
 ## Linux kernel defconfig
