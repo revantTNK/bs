@@ -12,13 +12,13 @@ echo '<manifest>' >> .repo/local_manifests/muppets.xml
 echo "  <project name=\"TheMuppets/proprietary_vendor_samsung_gta4xl\" path=\"vendor/samsung/gta4xl\" revision=\"lineage-21\" clone-depth=\"1\" />" >> .repo/local_manifests/muppets.xml
 echo '</manifest>' >> .repo/local_manifests/muppets.xml
 
-#Pull device specific data
-source build/envsetup.sh
-breakfast gta4xl
-
 # pull unavailable vendor files
 git clone https://github.com/TheMuppets/proprietary_vendor_samsung_gta4xl -b lineage-21 vendor/samsung/gta4xl
 git clone https://github.com/TheMuppets/proprietary_vendor_samsung_gta4xl-common -b lineage-21 vendor/samsung/gta4xl-common
+
+#Pull device specific data
+source build/envsetup.sh
+breakfast gta4xl
 
 # replace device.mk because sed hates dollar symbols and im mad now 
 rm device/samsung/gta4xl/device.mk
