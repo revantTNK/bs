@@ -24,6 +24,9 @@ breakfast gta4xl
 rm device/samsung/gta4xl/device.mk
 wget https://github.com/revantTNK/bs/raw/refs/heads/main/device.mk -P device/samsung/gta4xl/
 
+rm device/samsung/gta4xl/lineage_gta4xl.mk
+wget https://github.com/revantTNK/bs/raw/refs/heads/main/lineage_gta4xl.mk -P device/samsung/gta4xl/
+
 # Patches
 ## Linux kernel defconfig
 sed -i '/CONFIG_SYSVIPC/d' kernel/samsung/gta4xl/arch/arm64/configs/exynos9611-gta4xl_defconfig
