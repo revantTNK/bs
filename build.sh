@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ANDROID_BUILD_TOP="/crave-devspaces/lindroid"
+ANDROID_BUILD_TOP="/crave-devspaces/Lineage21"
 
 # Create Lindroid and TheMuppets manifests
 mkdir -p .repo/local_manifests/
