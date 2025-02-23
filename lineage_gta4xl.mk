@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Inherit lindroid
-$(call inherit-product, vendor/lindroid/lindroid.mk)
-
 ## Inherit from generic products, most specific first
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
