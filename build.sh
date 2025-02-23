@@ -6,6 +6,11 @@ ANDROID_BUILD_TOP="/crave-devspaces/Lineage21"
 mkdir -p .repo/local_manifests/
 wget https://raw.githubusercontent.com/Soupborsh/Lindroid-files/refs/heads/main/manifests/general/lindroid.xml -O .repo/local_manifests/lindroid.xml
 
+# clone lindroid repos
+git clone https://github.com/Linux-on-droid/vendor_lindroid vendor/lindroid
+git clone https://github.com/Linux-on-droid/external_lxc external/lxc
+git clone https://github.com/Linux-on-droid/libhybris libhybris
+
 # TheMuppets
 echo '<?xml version="1.0" encoding="UTF-8"?>' > .repo/local_manifests/muppets.xml
 echo '<manifest>' >> .repo/local_manifests/muppets.xml
