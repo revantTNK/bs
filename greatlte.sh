@@ -1,5 +1,7 @@
 ANDROID_BUILD_TOP="/crave-devspaces/test2"
 
+cd $ANDROID_BUILD_TOP
+
 repo sync -c
 
 #Pull device specific data
