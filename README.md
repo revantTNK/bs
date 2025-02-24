@@ -3,3 +3,6 @@ crave run --no-patch -- "wget https://github.com/revantTNK/bs/raw/refs/heads/mai
 
 
 crave run --no-patch -- "wget https://github.com/revantTNK/bs/raw/refs/heads/main/build.sh && chmod +x build.sh && ./build.sh"
+
+
+crave run --no-patch -- "wget https://github.com/revantTNK/bs/raw/refs/heads/main/greatlte.sh && chmod +x greatlte.sh && ./greatlte.sh"
