@@ -29,3 +29,5 @@ TARGET_KERNEL_CONFIG := exynos8895-greatlte_defconfig
 
 # inherit from the proprietary version
 -include vendor/samsung/greatlte/BoardConfigVendor.mk
+
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
