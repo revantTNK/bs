@@ -1,5 +1,3 @@
-crave clone create --projectID 72 /crave-devspaces/lineage21
-
 ## vars
 ANDROID_BUILD_TOP=/crave-devspaces/lineage21
 
